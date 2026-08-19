@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Netflix Clone - Movies</title>
+
+    <link rel="stylesheet" href="movies.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <h1 class="logo">NETFLIX</h1>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="movies.html" class="active">Movies</a>
+        </div>
+    </nav>
+
+
+    <!-- Movies Section -->
+    <main class="movies-container">
+
+        <h2>Movies & TV Shows</h2>
+
+        <!-- Search -->
+        <div class="search-box">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search movies..."
+            >
+        </div>
+
+
+        <!-- Movie Grid -->
+        <section class="movie-grid" id="movieGrid">
+
+            <!-- Movie 1 -->
+            <div class="movie-card" data-title="Stranger Things">
+                <img src="assets/movie1.jpg" alt="Stranger Things">
+
+                <div class="movie-info">
+                    <h3>Stranger Things</h3>
+                    <p>⭐ 8.7</p>
+                    <button onclick="watchMovie('Stranger Things')">
+                        ▶ Watch Now
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- Movie 2 -->
+            <div class="movie-card" data-title="Wednesday">
+                <img src="assets/movie2.jpg" alt="Wednesday">
+
+                <div class="movie-info">
+                    <h3>Wednesday</h3>
+                    <p>⭐ 8.1</p>
+                    <button onclick="watchMovie('Wednesday')">
+                        ▶ Watch Now
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- Movie 3 -->
+            <div class="movie-card" data-title="Money Heist">
+                <img src="assets/movie3.jpg" alt="Money Heist">
+
+                <div class="movie-info">
+                    <h3>Money Heist</h3>
+                    <p>⭐ 8.2</p>
+                    <button onclick="watchMovie('Money Heist')">
+                        ▶ Watch Now
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- Movie 4 -->
+            <div class="movie-card" data-title="The Witcher">
+                <img src="assets/movie4.jpg" alt="The Witcher">
+
+                <div class="movie-info">
+                    <h3>The Witcher</h3>
+                    <p>⭐ 8.0</p>
+                    <button onclick="watchMovie('The Witcher')">
+                        ▶ Watch Now
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- Movie 5 -->
+            <div class="movie-card" data-title="Bridgerton">
+                <img src="assets/movie5.jpg" alt="Bridgerton">
+
+                <div class="movie-info">
+                    <h3>Bridgerton</h3>
+                    <p>⭐ 7.4</p>
+                    <button onclick="watchMovie('Bridgerton')">
+                        ▶ Watch Now
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- JavaScript -->
+    <script src="movies.js"></script>
+
+</body>
+</html>
