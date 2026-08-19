@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #000;
+    color: #fff;
+}
+
+.profile-page {
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.75),
+            rgba(0, 0, 0, 0.9)
+        ),
+        url("assets/hero.jpg") center/cover no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+/* Netflix Logo */
+
+.netflix-logo {
+    position: absolute;
+
+    top: 25px;
+    left: 50px;
+
+    color: #e50914;
+
+    font-size: 34px;
+    font-weight: 900;
+
+    letter-spacing: -2px;
+}
+
+/* Profile Container */
+
+.profile-container {
+    text-align: center;
+}
+
+.profile-container h1 {
+    font-size: 38px;
+    margin-bottom: 40px;
+}
+
+/* Profile Card */
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 35px;
+}
+
+.profile-avatar {
+    width: 130px;
+    height: 130px;
+
+    background: #333;
+
+    border-radius: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 65px;
+
+    margin-bottom: 15px;
+}
+
+.profile-avatar:hover {
+    border: 3px solid #fff;
+}
+
+.profile-card h2 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.profile-card p {
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* Buttons */
+
+.profile-actions {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    width: 280px;
+}
+
+.profile-actions button {
+    padding: 14px;
+
+    border: none;
+    border-radius: 4px;
+
+    background: #e50914;
+    color: #fff;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.profile-actions button:hover {
+    background: #b20710;
+}
+
+#logoutBtn {
+    background: transparent;
+
+    border: 1px solid #777;
+
+    color: #aaa;
+}
+
+#logoutBtn:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .netflix-logo {
+        top: 20px;
+        left: 25px;
+
+        font-size: 27px;
+    }
+
+    .profile-container h1 {
+        font-size: 28px;
+    }
+
+    .profile-avatar {
+        width: 110px;
+        height: 110px;
+    }
+
+    .profile-actions {
+        width: 240px;
+    }
+}
