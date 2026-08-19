@@ -8,7 +8,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Netflix Clone - Watch</title>
+    <title>Netflix Clone - Watch Trailer</title>
 
 
     <style>
@@ -71,7 +71,7 @@
         }
 
 
-        /* Main Container */
+        /* Main */
 
         .watch-container {
 
@@ -83,9 +83,11 @@
         }
 
 
-        /* Video */
+        /* Trailer */
 
-        .video-container {
+        .trailer-container {
+
+            position: relative;
 
             width: 100%;
 
@@ -96,22 +98,91 @@
             border-radius: 8px;
 
             overflow: hidden;
+
+            cursor: pointer;
         }
 
 
-        .video-container iframe {
+        .trailer-poster {
 
             width: 100%;
 
             height: 100%;
 
-            border: none;
+            object-fit: cover;
 
             display: block;
         }
 
 
-        /* Movie Information */
+        /* Dark overlay */
+
+        .trailer-overlay {
+
+            position: absolute;
+
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.35);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition: background 0.3s ease;
+        }
+
+
+        .trailer-container:hover .trailer-overlay {
+
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+
+        /* Play button */
+
+        .play-button {
+
+            width: 80px;
+
+            height: 80px;
+
+            border-radius: 50%;
+
+            background: #e50914;
+
+            color: white;
+
+            border: none;
+
+            font-size: 35px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding-left: 6px;
+
+            cursor: pointer;
+
+            transition: transform 0.2s ease,
+                        background 0.2s ease;
+        }
+
+
+        .play-button:hover {
+
+            transform: scale(1.1);
+
+            background: #b20710;
+        }
+
+
+        /* Movie information */
 
         .movie-title {
 
@@ -130,6 +201,16 @@
             font-size: 16px;
 
             line-height: 1.6;
+        }
+
+
+        .trailer-label {
+
+            margin-top: 12px;
+
+            color: #aaa;
+
+            font-size: 14px;
         }
 
 
@@ -152,6 +233,16 @@
             .watch-navbar {
 
                 padding: 0 20px;
+            }
+
+
+            .play-button {
+
+                width: 60px;
+
+                height: 60px;
+
+                font-size: 27px;
             }
 
         }
@@ -189,17 +280,33 @@
     <main class="watch-container">
 
 
-        <!-- Video Player -->
+        <!-- Trailer Poster -->
 
-        <div class="video-container">
+        <div
+            class="trailer-container"
+            id="trailerContainer"
+            onclick="openTrailer()">
 
-            <iframe
-                id="movieVideo"
+
+            <img
+                id="trailerPoster"
+                class="trailer-poster"
                 src=""
-                title="Movie Trailer"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
+                alt="Trailer Poster">
+
+
+            <div class="trailer-overlay">
+
+                <button
+                    class="play-button"
+                    aria-label="Play Trailer">
+
+                    ▶
+
+                </button>
+
+            </div>
+
 
         </div>
 
@@ -217,13 +324,20 @@
 
 
 
-        <!-- Movie Description -->
+        <!-- Description -->
 
         <p
             class="movie-description"
             id="movieDescription">
 
-            Enjoy watching your selected movie on Netflix Clone.
+            Enjoy watching the trailer.
+
+        </p>
+
+
+        <p class="trailer-label">
+
+            ▶ Click the poster to watch the official trailer on YouTube
 
         </p>
 
@@ -249,16 +363,14 @@
             urlParams.get("movie");
 
 
-
-        // Movie Trailer Data
+        // Movie trailer data
 
         const movies = {
 
 
             "The Vampire Diaries": {
 
-                video:
-                    "https://www.youtube-nocookie.com/embed/_j0pa89de9c",
+                video: "_j0pa89de9c",
 
                 description:
                     "Follow the story of the Salvatore brothers and Elena Gilbert in the mysterious town of Mystic Falls."
@@ -268,8 +380,7 @@
 
             "The Witcher": {
 
-                video:
-                    "PASTE_WITCHER_TRAILER_ID_HERE",
+                video: "SzS8Ao0H6Co",
 
                 description:
                     "Geralt of Rivia, a mutated monster hunter, struggles to find his place in a dangerous world."
@@ -279,8 +390,7 @@
 
             "Stranger Things": {
 
-                video:
-                    "PASTE_STRANGER_THINGS_TRAILER_ID_HERE",
+                video: "ncn84cMWgRA",
 
                 description:
                     "A group of friends uncover supernatural mysteries and secret experiments in Hawkins."
@@ -290,8 +400,7 @@
 
             "Squid Game": {
 
-                video:
-                    "PASTE_SQUID_GAME_TRAILER_ID_HERE",
+                video: "oqxAJKy0ii4",
 
                 description:
                     "Hundreds of desperate contestants compete in mysterious games for a life-changing prize."
@@ -301,8 +410,7 @@
 
             "Alchemy of Souls": {
 
-                video:
-                    "PASTE_ALCHEMY_OF_SOULS_TRAILER_ID_HERE",
+                video: "iMn6s5XpfhI",
 
                 description:
                     "A powerful sorceress and a young man become entangled in magic, destiny and a mysterious exchange of souls."
@@ -312,13 +420,20 @@
         };
 
 
+        // Current video ID
 
-        // Check whether movie exists
+        let currentVideoId = "";
+
+
+        // Load movie information
 
         if (
             movieName &&
             movies[movieName]
         ) {
+
+            const movie =
+                movies[movieName];
 
 
             // Set title
@@ -329,29 +444,45 @@
                 movieName;
 
 
-
             // Set description
 
             document.getElementById(
                 "movieDescription"
             ).textContent =
-                movies[movieName].description;
+                movie.description;
 
 
+            // Save video ID
 
-            // Set trailer
-
-            const trailer =
-                movies[movieName].video;
+            currentVideoId =
+                movie.video;
 
 
-            if (
-                trailer.startsWith("https://")
-            ) {
+            // Load YouTube thumbnail
 
-                document.getElementById(
-                    "movieVideo"
-                ).src = trailer;
+            document.getElementById(
+                "trailerPoster"
+            ).src =
+                "https://img.youtube.com/vi/"
+                + currentVideoId
+                + "/maxresdefault.jpg";
+
+        }
+
+
+        // Open YouTube trailer
+
+        function openTrailer() {
+
+            if (currentVideoId) {
+
+                const youtubeURL =
+                    "https://www.youtube.com/watch?v="
+                    + currentVideoId;
+
+
+                window.location.href =
+                    youtubeURL;
 
             }
 
