@@ -1,0 +1,308 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #000;
+    color: #fff;
+}
+
+/* =========================
+   LOGIN PAGE
+========================= */
+
+.login-page {
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.75)
+        ),
+        url("assets/hero.jpg") center/cover no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    padding: 40px 20px;
+}
+
+
+/* =========================
+   NETFLIX LOGO
+========================= */
+
+.netflix-logo {
+    position: absolute;
+
+    top: 25px;
+    left: 50px;
+
+    color: #e50914;
+
+    font-size: 34px;
+    font-weight: 900;
+
+    letter-spacing: -2px;
+}
+
+
+/* =========================
+   LOGIN BOX
+========================= */
+
+.login-box {
+    width: 100%;
+    max-width: 450px;
+
+    background: rgba(0, 0, 0, 0.78);
+
+    padding: 55px 60px;
+
+    border-radius: 4px;
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+.login-box h1 {
+    font-size: 32px;
+    margin-bottom: 28px;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+#loginForm input[type="email"],
+#loginForm input[type="password"] {
+    width: 100%;
+
+    padding: 16px;
+
+    margin-bottom: 16px;
+
+    border: 1px solid #555;
+    border-radius: 4px;
+
+    background: #333;
+    color: #fff;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+#loginForm input:focus {
+    border-color: #fff;
+}
+
+#loginForm input::placeholder {
+    color: #aaa;
+}
+
+
+/* =========================
+   SIGN IN BUTTON
+========================= */
+
+.signin-button {
+    width: 100%;
+
+    padding: 15px;
+
+    margin-top: 10px;
+
+    background: #e50914;
+    color: #fff;
+
+    border: none;
+    border-radius: 4px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.signin-button:hover {
+    background: #b20710;
+}
+
+
+/* =========================
+   LOGIN MESSAGE
+========================= */
+
+#loginMessage {
+    min-height: 20px;
+
+    margin-top: 12px;
+
+    font-size: 14px;
+
+    color: #e87c03;
+}
+
+
+/* =========================
+   OR
+========================= */
+
+.or {
+    text-align: center;
+
+    color: #aaa;
+
+    margin: 18px 0;
+}
+
+
+/* =========================
+   SIGN-IN CODE
+========================= */
+
+.code-button {
+    width: 100%;
+
+    padding: 14px;
+
+    background: #444;
+
+    color: #fff;
+
+    border: none;
+    border-radius: 4px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.code-button:hover {
+    background: #555;
+}
+
+
+/* =========================
+   FORGOT PASSWORD
+========================= */
+
+.forgot-password {
+    color: #fff;
+
+    text-align: center;
+
+    margin: 22px 0;
+
+    font-size: 14px;
+
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   REMEMBER ME
+========================= */
+
+.remember {
+    color: #b3b3b3;
+
+    font-size: 13px;
+
+    margin-bottom: 30px;
+}
+
+.remember input {
+    margin-right: 7px;
+}
+
+
+/* =========================
+   SIGN UP
+========================= */
+
+.signup-text {
+    color: #737373;
+
+    font-size: 16px;
+
+    margin-bottom: 20px;
+}
+
+.signup-text a {
+    color: #fff;
+
+    text-decoration: none;
+
+    margin-left: 5px;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   SECURITY TEXT
+========================= */
+
+.security-text {
+    color: #737373;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .login-page {
+        padding: 80px 20px 30px;
+    }
+
+    .netflix-logo {
+        top: 20px;
+        left: 25px;
+
+        font-size: 27px;
+    }
+
+    .login-box {
+        padding: 35px 25px;
+
+        background: rgba(0, 0, 0, 0.85);
+    }
+
+    .login-box h1 {
+        font-size: 28px;
+    }
+
+}

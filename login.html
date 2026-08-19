@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Netflix - Sign In</title>
+
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="login-page">
+
+        <!-- Netflix Logo -->
+        <div class="netflix-logo">
+            NETFLIX
+        </div>
+
+        <!-- Login Box -->
+        <div class="login-box">
+
+            <h1>Sign In</h1>
+
+            <form id="loginForm">
+
+                <!-- Email -->
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Email or mobile number"
+                    required
+                >
+
+                <!-- Password -->
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    required
+                >
+
+                <!-- Sign In -->
+                <button type="submit" class="signin-button">
+                    Sign In
+                </button>
+
+                <!-- Error Message -->
+                <p id="loginMessage"></p>
+
+                <!-- OR -->
+                <div class="or">
+                    OR
+                </div>
+
+                <!-- Sign-in Code -->
+                <button type="button" class="code-button">
+                    Use a sign-in code
+                </button>
+
+                <!-- Forgot Password -->
+                <a href="#" class="forgot-password">
+                    Forgot password?
+                </a>
+
+            </form>
+
+
+            <!-- Remember Me -->
+            <div class="remember">
+
+                <label>
+                    <input type="checkbox" id="rememberMe">
+                    Remember me
+                </label>
+
+            </div>
+
+
+            <!-- New to Netflix -->
+            <div class="signup-text">
+
+                <span>New to Netflix?</span>
+
+                <a href="signup.html">
+                    Sign up now.
+                </a>
+
+            </div>
+
+
+            <!-- Security Info -->
+            <p class="security-text">
+                This page is protected by Google reCAPTCHA to ensure
+                you're not a bot.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="user.js"></script>
+
+</body>
+
+</html>
