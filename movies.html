@@ -40,73 +40,149 @@
         <!-- Movie Grid -->
         <section class="movie-grid" id="movieGrid">
 
+
             <!-- Movie 1 -->
-            <div class="movie-card" data-title="Stranger Things">
-                <img src="assets/movie1.jpg" alt="Stranger Things">
+            <div class="movie-card" data-title="The Vampire Diaries">
+
+                <div
+                    class="poster-container"
+                    onclick="watchMovie('The Vampire Diaries')"
+                >
+                    <img
+                        src="assets/movie1.jpg"
+                        alt="The Vampire Diaries"
+                    >
+
+                    <div class="play-overlay">
+                        ▶
+                    </div>
+                </div>
 
                 <div class="movie-info">
-                    <h3>Stranger Things</h3>
-                    <p>⭐ 8.7</p>
-                    <button onclick="watchMovie('Stranger Things')">
-                        ▶ Watch Now
+                    <h3>The Vampire Diaries</h3>
+                    <p>⭐ 8.0</p>
+
+                    <button onclick="watchMovie('The Vampire Diaries')">
+                        ▶ Watch Trailer
                     </button>
                 </div>
+
             </div>
 
 
             <!-- Movie 2 -->
-            <div class="movie-card" data-title="Wednesday">
-                <img src="assets/movie2.jpg" alt="Wednesday">
-
-                <div class="movie-info">
-                    <h3>Wednesday</h3>
-                    <p>⭐ 8.1</p>
-                    <button onclick="watchMovie('Wednesday')">
-                        ▶ Watch Now
-                    </button>
-                </div>
-            </div>
-
-
-            <!-- Movie 3 -->
-            <div class="movie-card" data-title="Money Heist">
-                <img src="assets/movie3.jpg" alt="Money Heist">
-
-                <div class="movie-info">
-                    <h3>Money Heist</h3>
-                    <p>⭐ 8.2</p>
-                    <button onclick="watchMovie('Money Heist')">
-                        ▶ Watch Now
-                    </button>
-                </div>
-            </div>
-
-
-            <!-- Movie 4 -->
             <div class="movie-card" data-title="The Witcher">
-                <img src="assets/movie4.jpg" alt="The Witcher">
+
+                <div
+                    class="poster-container"
+                    onclick="watchMovie('The Witcher')"
+                >
+                    <img
+                        src="assets/movie2.jpg"
+                        alt="The Witcher"
+                    >
+
+                    <div class="play-overlay">
+                        ▶
+                    </div>
+                </div>
 
                 <div class="movie-info">
                     <h3>The Witcher</h3>
                     <p>⭐ 8.0</p>
+
                     <button onclick="watchMovie('The Witcher')">
-                        ▶ Watch Now
+                        ▶ Watch Trailer
                     </button>
                 </div>
+
+            </div>
+
+
+            <!-- Movie 3 -->
+            <div class="movie-card" data-title="Stranger Things">
+
+                <div
+                    class="poster-container"
+                    onclick="watchMovie('Stranger Things')"
+                >
+                    <img
+                        src="assets/movie3.jpg"
+                        alt="Stranger Things"
+                    >
+
+                    <div class="play-overlay">
+                        ▶
+                    </div>
+                </div>
+
+                <div class="movie-info">
+                    <h3>Stranger Things</h3>
+                    <p>⭐ 8.7</p>
+
+                    <button onclick="watchMovie('Stranger Things')">
+                        ▶ Watch Trailer
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- Movie 4 -->
+            <div class="movie-card" data-title="Squid Game">
+
+                <div
+                    class="poster-container"
+                    onclick="watchMovie('Squid Game')"
+                >
+                    <img
+                        src="assets/movie4.jpg"
+                        alt="Squid Game"
+                    >
+
+                    <div class="play-overlay">
+                        ▶
+                    </div>
+                </div>
+
+                <div class="movie-info">
+                    <h3>Squid Game</h3>
+                    <p>⭐ 8.0</p>
+
+                    <button onclick="watchMovie('Squid Game')">
+                        ▶ Watch Trailer
+                    </button>
+                </div>
+
             </div>
 
 
             <!-- Movie 5 -->
-            <div class="movie-card" data-title="Bridgerton">
-                <img src="assets/movie5.jpg" alt="Bridgerton">
+            <div class="movie-card" data-title="Alchemy of Souls">
+
+                <div
+                    class="poster-container"
+                    onclick="watchMovie('Alchemy of Souls')"
+                >
+                    <img
+                        src="assets/movie5.jpg"
+                        alt="Alchemy of Souls"
+                    >
+
+                    <div class="play-overlay">
+                        ▶
+                    </div>
+                </div>
 
                 <div class="movie-info">
-                    <h3>Bridgerton</h3>
-                    <p>⭐ 7.4</p>
-                    <button onclick="watchMovie('Bridgerton')">
-                        ▶ Watch Now
+                    <h3>Alchemy of Souls</h3>
+                    <p>⭐ 8.7</p>
+
+                    <button onclick="watchMovie('Alchemy of Souls')">
+                        ▶ Watch Trailer
                     </button>
                 </div>
+
             </div>
 
         </section>
@@ -114,7 +190,6 @@
     </main>
 
 
-    <!-- JavaScript -->
     <script src="movies.js"></script>
 
 </body>

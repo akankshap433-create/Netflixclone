@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Netflix Clone - Watch</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            background: #000;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        /* Navigation */
+
+        .watch-navbar {
+
+            height: 70px;
+
+            background: #000;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 5%;
+        }
+
+
+        .logo {
+
+            color: #e50914;
+
+            font-size: 28px;
+
+            font-weight: bold;
+        }
+
+
+        .back-btn {
+
+            margin-left: auto;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 16px;
+        }
+
+
+        .back-btn:hover {
+
+            color: #e50914;
+        }
+
+
+        /* Main Container */
+
+        .watch-container {
+
+            width: 90%;
+
+            max-width: 1200px;
+
+            margin: 40px auto;
+        }
+
+
+        /* Video */
+
+        .video-container {
+
+            width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            background: #111;
+
+            border-radius: 8px;
+
+            overflow: hidden;
+        }
+
+
+        .video-container iframe {
+
+            width: 100%;
+
+            height: 100%;
+
+            border: none;
+
+            display: block;
+        }
+
+
+        /* Movie Information */
+
+        .movie-title {
+
+            margin-top: 25px;
+
+            font-size: 32px;
+        }
+
+
+        .movie-description {
+
+            margin-top: 12px;
+
+            color: #ccc;
+
+            font-size: 16px;
+
+            line-height: 1.6;
+        }
+
+
+        /* Mobile */
+
+        @media (max-width: 650px) {
+
+            .watch-container {
+
+                width: 95%;
+            }
+
+
+            .movie-title {
+
+                font-size: 25px;
+            }
+
+
+            .watch-navbar {
+
+                padding: 0 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Navigation -->
+
+    <nav class="watch-navbar">
+
+        <div class="logo">
+            NETFLIX
+        </div>
+
+
+        <a href="movies.html"
+           class="back-btn">
+
+            ← Back to Movies
+
+        </a>
+
+    </nav>
+
+
+
+    <!-- Watch Section -->
+
+    <main class="watch-container">
+
+
+        <!-- Video Player -->
+
+        <div class="video-container">
+
+            <iframe
+                id="movieVideo"
+                src=""
+                title="Movie Trailer"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+
+
+        <!-- Movie Title -->
+
+        <h1
+            class="movie-title"
+            id="movieTitle">
+
+            Movie
+
+        </h1>
+
+
+
+        <!-- Movie Description -->
+
+        <p
+            class="movie-description"
+            id="movieDescription">
+
+            Enjoy watching your selected movie on Netflix Clone.
+
+        </p>
+
+
+    </main>
+
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+
+        // Get movie name from URL
+
+        const urlParams =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const movieName =
+            urlParams.get("movie");
+
+
+
+        // Movie Trailer Data
+
+        const movies = {
+
+
+            "The Vampire Diaries": {
+
+                video:
+                    "https://www.youtube-nocookie.com/embed/_j0pa89de9c",
+
+                description:
+                    "Follow the story of the Salvatore brothers and Elena Gilbert in the mysterious town of Mystic Falls."
+
+            },
+
+
+            "The Witcher": {
+
+                video:
+                    "PASTE_WITCHER_TRAILER_ID_HERE",
+
+                description:
+                    "Geralt of Rivia, a mutated monster hunter, struggles to find his place in a dangerous world."
+
+            },
+
+
+            "Stranger Things": {
+
+                video:
+                    "PASTE_STRANGER_THINGS_TRAILER_ID_HERE",
+
+                description:
+                    "A group of friends uncover supernatural mysteries and secret experiments in Hawkins."
+
+            },
+
+
+            "Squid Game": {
+
+                video:
+                    "PASTE_SQUID_GAME_TRAILER_ID_HERE",
+
+                description:
+                    "Hundreds of desperate contestants compete in mysterious games for a life-changing prize."
+
+            },
+
+
+            "Alchemy of Souls": {
+
+                video:
+                    "PASTE_ALCHEMY_OF_SOULS_TRAILER_ID_HERE",
+
+                description:
+                    "A powerful sorceress and a young man become entangled in magic, destiny and a mysterious exchange of souls."
+
+            }
+
+        };
+
+
+
+        // Check whether movie exists
+
+        if (
+            movieName &&
+            movies[movieName]
+        ) {
+
+
+            // Set title
+
+            document.getElementById(
+                "movieTitle"
+            ).textContent =
+                movieName;
+
+
+
+            // Set description
+
+            document.getElementById(
+                "movieDescription"
+            ).textContent =
+                movies[movieName].description;
+
+
+
+            // Set trailer
+
+            const trailer =
+                movies[movieName].video;
+
+
+            if (
+                trailer.startsWith("https://")
+            ) {
+
+                document.getElementById(
+                    "movieVideo"
+                ).src = trailer;
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
