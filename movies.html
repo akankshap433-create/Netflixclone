@@ -1,53 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Netflix Clone - Movies</title>
 
     <link rel="stylesheet" href="movies.css">
+
 </head>
+
 
 <body>
 
+
     <!-- Navigation -->
+
     <nav class="navbar">
-        <h1 class="logo">NETFLIX</h1>
+
+        <h1 class="logo">
+            NETFLIX
+        </h1>
+
 
         <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="movies.html" class="active">Movies</a>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="movies.html" class="active">
+                Movies
+            </a>
+
         </div>
+
     </nav>
 
 
+
     <!-- Movies Section -->
+
     <main class="movies-container">
 
-        <h2>Movies & TV Shows</h2>
+
+        <h2>
+            Movies & TV Shows
+        </h2>
+
+
 
         <!-- Search -->
+
         <div class="search-box">
+
             <input
                 type="text"
                 id="searchInput"
                 placeholder="Search movies..."
             >
+
         </div>
 
 
+
         <!-- Movie Grid -->
-        <section class="movie-grid" id="movieGrid">
+
+        <section
+            class="movie-grid"
+            id="movieGrid"
+        >
 
 
             <!-- Movie 1 -->
-            <div class="movie-card" data-title="The Vampire Diaries">
 
-                <div
-                    class="poster-container"
-                    onclick="watchMovie('The Vampire Diaries')"
-                >
+            <div
+                class="movie-card"
+                data-title="The Vampire Diaries"
+                onclick="openMovieDetails('The Vampire Diaries')"
+            >
+
+                <div class="poster-container">
+
                     <img
                         src="assets/movie1.jpg"
                         alt="The Vampire Diaries"
@@ -56,27 +94,43 @@
                     <div class="play-overlay">
                         ▶
                     </div>
+
                 </div>
 
-                <div class="movie-info">
-                    <h3>The Vampire Diaries</h3>
-                    <p>⭐ 8.0</p>
 
-                    <button onclick="watchMovie('The Vampire Diaries')">
+                <div class="movie-info">
+
+                    <h3>
+                        The Vampire Diaries
+                    </h3>
+
+                    <p>
+                        ⭐ 8.0
+                    </p>
+
+
+                    <button
+                        onclick="event.stopPropagation(); watchMovie('The Vampire Diaries')"
+                    >
                         ▶ Watch Trailer
                     </button>
+
                 </div>
 
             </div>
 
 
-            <!-- Movie 2 -->
-            <div class="movie-card" data-title="The Witcher">
 
-                <div
-                    class="poster-container"
-                    onclick="watchMovie('The Witcher')"
-                >
+            <!-- Movie 2 -->
+
+            <div
+                class="movie-card"
+                data-title="The Witcher"
+                onclick="openMovieDetails('The Witcher')"
+            >
+
+                <div class="poster-container">
+
                     <img
                         src="assets/movie2.jpg"
                         alt="The Witcher"
@@ -85,27 +139,43 @@
                     <div class="play-overlay">
                         ▶
                     </div>
+
                 </div>
 
-                <div class="movie-info">
-                    <h3>The Witcher</h3>
-                    <p>⭐ 8.0</p>
 
-                    <button onclick="watchMovie('The Witcher')">
+                <div class="movie-info">
+
+                    <h3>
+                        The Witcher
+                    </h3>
+
+                    <p>
+                        ⭐ 8.0
+                    </p>
+
+
+                    <button
+                        onclick="event.stopPropagation(); watchMovie('The Witcher')"
+                    >
                         ▶ Watch Trailer
                     </button>
+
                 </div>
 
             </div>
 
 
-            <!-- Movie 3 -->
-            <div class="movie-card" data-title="Stranger Things">
 
-                <div
-                    class="poster-container"
-                    onclick="watchMovie('Stranger Things')"
-                >
+            <!-- Movie 3 -->
+
+            <div
+                class="movie-card"
+                data-title="Stranger Things"
+                onclick="openMovieDetails('Stranger Things')"
+            >
+
+                <div class="poster-container">
+
                     <img
                         src="assets/movie3.jpg"
                         alt="Stranger Things"
@@ -114,27 +184,43 @@
                     <div class="play-overlay">
                         ▶
                     </div>
+
                 </div>
 
-                <div class="movie-info">
-                    <h3>Stranger Things</h3>
-                    <p>⭐ 8.7</p>
 
-                    <button onclick="watchMovie('Stranger Things')">
+                <div class="movie-info">
+
+                    <h3>
+                        Stranger Things
+                    </h3>
+
+                    <p>
+                        ⭐ 8.7
+                    </p>
+
+
+                    <button
+                        onclick="event.stopPropagation(); watchMovie('Stranger Things')"
+                    >
                         ▶ Watch Trailer
                     </button>
+
                 </div>
 
             </div>
 
 
-            <!-- Movie 4 -->
-            <div class="movie-card" data-title="Squid Game">
 
-                <div
-                    class="poster-container"
-                    onclick="watchMovie('Squid Game')"
-                >
+            <!-- Movie 4 -->
+
+            <div
+                class="movie-card"
+                data-title="Squid Game"
+                onclick="openMovieDetails('Squid Game')"
+            >
+
+                <div class="poster-container">
+
                     <img
                         src="assets/movie4.jpg"
                         alt="Squid Game"
@@ -143,27 +229,43 @@
                     <div class="play-overlay">
                         ▶
                     </div>
+
                 </div>
 
-                <div class="movie-info">
-                    <h3>Squid Game</h3>
-                    <p>⭐ 8.0</p>
 
-                    <button onclick="watchMovie('Squid Game')">
+                <div class="movie-info">
+
+                    <h3>
+                        Squid Game
+                    </h3>
+
+                    <p>
+                        ⭐ 8.0
+                    </p>
+
+
+                    <button
+                        onclick="event.stopPropagation(); watchMovie('Squid Game')"
+                    >
                         ▶ Watch Trailer
                     </button>
+
                 </div>
 
             </div>
 
 
-            <!-- Movie 5 -->
-            <div class="movie-card" data-title="Alchemy of Souls">
 
-                <div
-                    class="poster-container"
-                    onclick="watchMovie('Alchemy of Souls')"
-                >
+            <!-- Movie 5 -->
+
+            <div
+                class="movie-card"
+                data-title="Alchemy of Souls"
+                onclick="openMovieDetails('Alchemy of Souls')"
+            >
+
+                <div class="poster-container">
+
                     <img
                         src="assets/movie5.jpg"
                         alt="Alchemy of Souls"
@@ -172,25 +274,135 @@
                     <div class="play-overlay">
                         ▶
                     </div>
+
                 </div>
 
-                <div class="movie-info">
-                    <h3>Alchemy of Souls</h3>
-                    <p>⭐ 8.7</p>
 
-                    <button onclick="watchMovie('Alchemy of Souls')">
+                <div class="movie-info">
+
+                    <h3>
+                        Alchemy of Souls
+                    </h3>
+
+                    <p>
+                        ⭐ 8.7
+                    </p>
+
+
+                    <button
+                        onclick="event.stopPropagation(); watchMovie('Alchemy of Souls')"
+                    >
                         ▶ Watch Trailer
                     </button>
+
                 </div>
 
             </div>
 
+
         </section>
+
 
     </main>
 
 
+
+    <!-- Movie Details Popup -->
+
+    <div
+        class="movie-modal"
+        id="movieModal"
+    >
+
+        <div class="modal-content">
+
+
+            <!-- Close Button -->
+
+            <button
+                class="close-modal"
+                onclick="closeMovieDetails()"
+            >
+                ✕
+            </button>
+
+
+
+            <!-- Poster -->
+
+            <img
+                id="modalPoster"
+                src=""
+                alt="Movie Poster"
+            >
+
+
+            <!-- Details -->
+
+            <div class="modal-details">
+
+                <h2 id="modalTitle">
+                    Movie
+                </h2>
+
+
+                <div class="modal-meta">
+
+                    <span id="modalRating">
+                        ⭐ 8.0
+                    </span>
+
+                    <span id="modalYear">
+                        2020
+                    </span>
+
+                    <span id="modalGenre">
+                        Drama
+                    </span>
+
+                </div>
+
+
+                <p id="modalDescription">
+                    Movie description
+                </p>
+
+
+
+                <!-- Buttons -->
+
+                <div class="modal-buttons">
+
+                    <button
+                        class="modal-watch-btn"
+                        id="modalWatchButton"
+                    >
+                        ▶ Watch Trailer
+                    </button>
+
+
+                    <button
+                        class="modal-list-btn"
+                        id="modalListButton"
+                    >
+                        + My List
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- JavaScript -->
+
     <script src="movies.js"></script>
 
+
 </body>
+
 </html>

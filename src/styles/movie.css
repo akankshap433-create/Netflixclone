@@ -1,0 +1,640 @@
+﻿/* ==========================================
+   NETFLIX MOVIE ROWS, CARDS & TOP 10 STYLES
+   ========================================== */
+
+.netflix-movie-row-section {
+  padding: 0 4%;
+  margin-bottom: 42px;
+  position: relative;
+}
+
+.row-header-wrapper {
+  margin-bottom: 14px;
+}
+
+.row-section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #E5E5E5;
+  letter-spacing: 0.2px;
+  transition: color 0.2s ease;
+}
+
+.row-section-title:hover {
+  color: #FFFFFF;
+}
+
+.row-slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.row-cards-container {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 18px 4px 28px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.row-cards-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Slider Navigation Arrows */
+.slider-arrow-btn {
+  position: absolute;
+  top: 0;
+  bottom: 10px;
+  width: 44px;
+  background: rgba(20, 20, 20, 0.7);
+  color: #FFFFFF;
+  font-size: 32px;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.row-slider-wrapper:hover .slider-arrow-btn {
+  opacity: 1;
+}
+
+.slider-arrow-btn:hover {
+  background: rgba(20, 20, 20, 0.95);
+}
+
+.left-arrow {
+  left: 0;
+}
+
+.right-arrow {
+  right: 0;
+}
+
+/* ==========================================
+   TOP 10 ROW SPECIFIC STYLING
+   ========================================== */
+
+.top10-row-section {
+  margin-bottom: 50px;
+}
+
+.top10-cards-container {
+  gap: 16px;
+  padding-bottom: 30px;
+}
+
+.top10-card-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.top10-card-item:hover {
+  transform: scale(1.06);
+  z-index: 50;
+}
+
+.top10-rank-number {
+  position: relative;
+  width: 95px;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  user-select: none;
+}
+
+.rank-text {
+  font-size: 155px;
+  font-weight: 900;
+  line-height: 1;
+  color: #000000;
+  -webkit-text-stroke: 4px #595959;
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+  font-family: "Impact", "Arial Black", sans-serif;
+  letter-spacing: -14px;
+  margin-right: -15px;
+  z-index: 1;
+}
+
+.top10-card-item:hover .rank-text {
+  -webkit-text-stroke: 4px #FFFFFF;
+}
+
+.top10-poster-wrap {
+  position: relative;
+  width: 135px;
+  height: 190px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.8);
+  background: #1F1F1F;
+  z-index: 2;
+}
+
+.top10-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.top10-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.top10-card-item:hover .top10-hover-overlay {
+  opacity: 1;
+}
+
+.top10-play-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: #000000;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+.top10-list-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(30, 30, 30, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #FFFFFF;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top10-list-btn.in-list {
+  background: var(--netflix-red);
+  border-color: var(--netflix-red);
+}
+
+.top10-card-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.top10-card-match {
+  font-size: 10px;
+  font-weight: 700;
+  color: #46D369;
+}
+
+/* ==========================================
+   STANDARD 2:3 POSTER CARD DESIGN
+   ========================================== */
+
+.netflix-movie-card {
+  position: relative;
+  flex: 0 0 190px;
+  height: 275px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.netflix-movie-card.large-card {
+  flex: 0 0 220px;
+  height: 320px;
+}
+
+.card-image-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.card-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-top-badges {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 4px;
+}
+
+.quality-pill {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+/* Card Hover Information Preview */
+.card-hover-overlay {
+  position: absolute;
+  top: -15px;
+  left: -20px;
+  width: calc(100% + 40px);
+  background: #181818;
+  border-radius: 6px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.95);
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.95);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 100;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.netflix-movie-card:hover .card-hover-overlay {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.hover-backdrop {
+  position: relative;
+  width: 100%;
+  height: 125px;
+  background: #000000;
+}
+
+.hover-backdrop-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hover-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #181818 0%, rgba(24, 24, 24, 0.2) 60%, transparent 100%);
+}
+
+.hover-content {
+  padding: 12px 14px 16px;
+}
+
+.hover-actions-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.hover-action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(42, 42, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #FFFFFF;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.hover-action-btn:hover {
+  border-color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.play-circle-btn {
+  background: #FFFFFF;
+  color: #000000;
+  border: none;
+  font-size: 14px;
+}
+
+.play-circle-btn:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.hover-action-btn.in-list {
+  background: var(--netflix-red);
+  border-color: var(--netflix-red);
+}
+
+.hover-action-btn.liked {
+  color: #46D369;
+  border-color: #46D369;
+}
+
+.hover-action-btn.info-btn {
+  margin-left: auto;
+  font-size: 18px;
+}
+
+.hover-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hover-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+
+.hover-match {
+  color: #46D369;
+  font-weight: 700;
+}
+
+.hover-maturity {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 1px 3px;
+  border-radius: 2px;
+  font-size: 9px;
+}
+
+.hover-duration {
+  color: #BBBBBB;
+}
+
+.hover-rating {
+  color: #FFC107;
+  font-weight: 600;
+}
+
+.hover-genres {
+  font-size: 11px;
+  color: #AAAAAA;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hover-genre-pill {
+  color: #CCCCCC;
+}
+
+/* ==========================================
+   CONTINUE WATCHING ROW
+   ========================================== */
+
+.continue-watching-section {
+  margin-bottom: 35px;
+}
+
+.continue-watching-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.profile-indicator-tag {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--netflix-muted);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+.cw-cards-container {
+  gap: 14px;
+}
+
+.cw-card {
+  flex: 0 0 240px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #1F1F1F;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.cw-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.cw-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 135px;
+  background: #000000;
+}
+
+.cw-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cw-play-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.cw-card:hover .cw-play-overlay {
+  opacity: 1;
+}
+
+.cw-play-btn-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #FFFFFF;
+  color: #FFFFFF;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.cw-play-overlay:hover .cw-play-btn-circle {
+  transform: scale(1.15);
+  background: var(--netflix-red);
+  border-color: var(--netflix-red);
+}
+
+.cw-remove-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  color: #FFFFFF;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  z-index: 10;
+}
+
+.cw-remove-btn:hover {
+  background: var(--netflix-red);
+}
+
+.cw-progress-container {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.cw-progress-bar-fill {
+  height: 100%;
+  background: var(--netflix-red);
+}
+
+.cw-info-row {
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cw-title-wrap {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-right: 8px;
+}
+
+.cw-movie-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cw-episode-subtitle {
+  font-size: 11px;
+  color: var(--netflix-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cw-time-remaining {
+  font-size: 11px;
+  color: var(--netflix-muted);
+  flex-shrink: 0;
+}
+
+/* ==========================================
+   RESPONSIVE LAYOUTS
+   ========================================== */
+
+@media (max-width: 1200px) {
+  .netflix-movie-card {
+    flex: 0 0 165px;
+    height: 240px;
+  }
+  .top10-rank-number {
+    width: 75px;
+    height: 160px;
+  }
+  .rank-text {
+    font-size: 125px;
+  }
+  .top10-poster-wrap {
+    width: 115px;
+    height: 160px;
+  }
+}
+
+@media (max-width: 768px) {
+  .netflix-movie-card {
+    flex: 0 0 135px;
+    height: 195px;
+  }
+  .netflix-movie-card.large-card {
+    flex: 0 0 155px;
+    height: 225px;
+  }
+  .top10-rank-number {
+    width: 60px;
+    height: 135px;
+  }
+  .rank-text {
+    font-size: 95px;
+    margin-right: -10px;
+  }
+  .top10-poster-wrap {
+    width: 95px;
+    height: 135px;
+  }
+  .cw-card {
+    flex: 0 0 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .netflix-movie-card {
+    flex: 0 0 115px;
+    height: 170px;
+  }
+  .slider-arrow-btn {
+    display: none;
+  }
+}

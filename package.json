@@ -1,0 +1,22 @@
+﻿{
+  "name": "netflix-streaming-platform",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Modern, responsive, polished Netflix-inspired streaming platform built with React.js",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "node build.js",
+    "serve": "node server.js",
+    "test": "node test_app.js"
+  },
+  "keywords": [
+    "netflix",
+    "react",
+    "streaming",
+    "tudum",
+    "profiles"
+  ],
+  "author": "",
+  "license": "MIT"
+}

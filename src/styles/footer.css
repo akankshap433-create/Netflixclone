@@ -1,0 +1,128 @@
+﻿/* ==========================================
+   NETFLIX FOOTER STYLES
+   ========================================== */
+
+.netflix-main-footer {
+  padding: 60px 4% 35px;
+  background-color: var(--netflix-black, #141414);
+  color: #737373;
+  font-size: 13px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 40px;
+}
+
+.footer-content-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-contact-text {
+  font-size: 14px;
+  color: #808080;
+  margin-bottom: 28px;
+}
+
+.footer-phone {
+  color: #808080;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-phone:hover {
+  text-decoration: underline;
+  color: #B3B3B3;
+}
+
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px 24px;
+  margin-bottom: 28px;
+}
+
+.footer-column {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-column li a {
+  color: #737373;
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.footer-column li a:hover {
+  text-decoration: underline;
+  color: #A3A3A3;
+}
+
+.footer-language-wrapper {
+  margin-bottom: 20px;
+}
+
+.footer-lang-select-box {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid #333333;
+  border-radius: 3px;
+  padding: 6px 12px 6px 10px;
+}
+
+.footer-globe-icon {
+  stroke: #808080;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+
+.footer-lang-select {
+  background: transparent;
+  border: none;
+  color: #808080;
+  font-size: 13px;
+  cursor: pointer;
+  outline: none;
+  padding-right: 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.footer-lang-select option {
+  background: #181818;
+  color: #FFFFFF;
+}
+
+.footer-caret {
+  position: absolute;
+  right: 10px;
+  font-size: 8px;
+  color: #808080;
+  pointer-events: none;
+}
+
+.footer-copyright {
+  font-size: 12px;
+  color: #555555;
+  margin: 0;
+}
+
+@media (max-width: 850px) {
+  .footer-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .footer-links-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
