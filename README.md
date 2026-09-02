@@ -30,8 +30,7 @@ A Netflix-inspired streaming platform developed as a collaborative project using
 ```bash
 npm install
 node server.js
-Then open:
-http://localhost:3000
+Then open:https://neftix.netlify.app/
 👩‍💻 Collaborators
 
 * Akanksha P
