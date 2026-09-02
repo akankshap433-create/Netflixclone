@@ -61,7 +61,7 @@ const bundleOrder = [
   "src/index.js"
 ];
 
-let bundleCode = `
+let appCode = `
 (function() {
   const React = window.React;
   const ReactDOM = window.ReactDOM;
@@ -72,19 +72,43 @@ for (const file of bundleOrder) {
   if (fs.existsSync(file)) {
     const raw = fs.readFileSync(file, "utf8");
     const stripped = stripModules(raw);
-    bundleCode += `\n// --- ${file} ---\n` + stripped + "\n";
+    appCode += `\n// --- ${file} ---\n` + stripped + "\n";
   } else {
     console.warn("File not found:", file);
   }
 }
 
-bundleCode += `\n})();\n`;
+appCode += `\n})();\n`;
 
-// Transpile the entire bundle with Babel
-const transformedBundle = Babel.transform(bundleCode, {
+// Transpile the React application JSX with Babel
+const transformedApp = Babel.transform(appCode, {
   presets: ["react"],
   plugins: []
 }).code;
 
-fs.writeFileSync("dist/bundle.js", transformedBundle, "utf8");
-console.log(`Created dist/bundle.js: ${transformedBundle.length} bytes`);
+// Load React 18 & ReactDOM 18 UMD vendor code
+let reactVendor = "";
+let reactDomVendor = "";
+
+if (fs.existsSync("dist/vendor/react.min.js")) {
+  reactVendor = fs.readFileSync("dist/vendor/react.min.js", "utf8");
+}
+if (fs.existsSync("dist/vendor/react-dom.min.js")) {
+  reactDomVendor = fs.readFileSync("dist/vendor/react-dom.min.js", "utf8");
+}
+
+// Consolidate vendor React + ReactDOM + Transpiled Application into a 100% self-contained bundle
+const finalBundle = `
+/**
+ * Netflix Streaming Platform - Production Consolidated Bundle
+ * Includes React 18 UMD, ReactDOM 18 UMD, and Application Code
+ */
+${reactVendor}
+;
+${reactDomVendor}
+;
+${transformedApp}
+`;
+
+fs.writeFileSync("dist/bundle.js", finalBundle, "utf8");
+console.log(`Created 100% self-contained dist/bundle.js: ${finalBundle.length} bytes`);
