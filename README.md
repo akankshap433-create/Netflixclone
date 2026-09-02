@@ -26,11 +26,8 @@ A Netflix-inspired streaming platform developed as a collaborative project using
 - Git & GitHub
 
 ## 🚀 Run the Project
+stream-ui-project.netlify.app
 
-```bash
-npm install
-node server.js
-Then open:https://neftix.netlify.app/
 👩‍💻 Collaborators
 
 * Akanksha P
