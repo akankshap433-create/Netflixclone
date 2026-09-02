@@ -1,0 +1,347 @@
+﻿/* ==========================================
+   PROFILE GATE & MANAGEMENT STYLES
+   ========================================== */
+
+.profile-gate-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: #141414;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+}
+
+.profile-gate-header {
+  position: absolute;
+  top: 30px;
+  left: 4%;
+}
+
+.profile-gate-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  width: 100%;
+}
+
+.profile-gate-heading {
+  font-size: 48px;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.profile-cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.profile-gate-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  width: 130px;
+}
+
+.profile-avatar-frame {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 3px solid transparent;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  background: #222222;
+}
+
+.profile-gate-card:hover .profile-avatar-frame {
+  border-color: #FFFFFF !important;
+  transform: scale(1.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+}
+
+.profile-gate-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-gate-name {
+  margin-top: 14px;
+  font-size: 16px;
+  color: var(--netflix-muted);
+  transition: color 0.2s ease;
+  text-align: center;
+}
+
+.profile-gate-card:hover .profile-gate-name {
+  color: #FFFFFF;
+}
+
+.profile-edit-badge {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  transition: background 0.2s ease;
+}
+
+.profile-gate-card:hover .profile-edit-badge {
+  background: rgba(229, 9, 20, 0.7);
+}
+
+.profile-gate-kids-tag {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #3A86FF;
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+  text-align: center;
+  padding: 2px 0;
+}
+
+/* Add Profile Card */
+.add-avatar-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed rgba(255, 255, 255, 0.3) !important;
+}
+
+.add-profile-card:hover .add-avatar-frame {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.add-plus-icon {
+  font-size: 48px;
+  color: var(--netflix-muted);
+  transition: color 0.2s ease;
+}
+
+.add-profile-card:hover .add-plus-icon {
+  color: #FFFFFF;
+}
+
+.profile-manage-btn {
+  background: transparent;
+  border: 1px solid var(--netflix-muted);
+  color: var(--netflix-muted);
+  padding: 10px 30px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.profile-manage-btn:hover, .profile-manage-btn.done-btn {
+  border-color: #FFFFFF;
+  background: #FFFFFF;
+  color: #000000;
+}
+
+/* Edit / Add Profile Dialog */
+.add-profile-dialog {
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 35px;
+  max-width: 550px;
+  width: 100%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+}
+
+.add-profile-dialog h2 {
+  font-size: 30px;
+  margin-bottom: 6px;
+}
+
+.add-profile-subtitle {
+  color: var(--netflix-muted);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.add-profile-form-body {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.add-avatar-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 6px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.add-profile-inputs {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.add-name-input {
+  background: #333333;
+  border: 1px solid transparent;
+  color: #FFFFFF;
+  padding: 12px 14px;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.add-name-input:focus {
+  border-color: #FFFFFF;
+}
+
+.kids-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #CCCCCC;
+  cursor: pointer;
+}
+
+/* Avatar Gallery Selection */
+.avatar-selection-section {
+  border-top: 1px solid var(--netflix-border);
+  padding-top: 18px;
+  margin-bottom: 24px;
+}
+
+.avatar-gallery-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #CCCCCC;
+  margin-bottom: 12px;
+}
+
+.avatar-options-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.avatar-option-card {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.avatar-option-card:hover {
+  transform: scale(1.1);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.avatar-option-card.selected {
+  border-color: var(--netflix-red);
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.6);
+}
+
+.avatar-thumbnail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-check-badge {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  background: var(--netflix-red);
+  color: white;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-profile-buttons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.add-save-btn {
+  background: #FFFFFF;
+  color: #000000;
+  font-weight: 700;
+  padding: 10px 26px;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.add-save-btn:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.add-cancel-btn {
+  background: transparent;
+  border: 1px solid var(--netflix-muted);
+  color: var(--netflix-muted);
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.add-cancel-btn:hover {
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+}
+
+.add-delete-btn {
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid #E50914;
+  color: #E50914;
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.add-delete-btn:hover {
+  background: #E50914;
+  color: #FFFFFF;
+}
+
+@media (max-width: 768px) {
+  .profile-gate-heading {
+    font-size: 32px;
+  }
+  .profile-avatar-frame {
+    width: 90px;
+    height: 90px;
+  }
+  .profile-gate-card {
+    width: 100px;
+  }
+}

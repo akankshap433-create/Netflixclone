@@ -6,14 +6,36 @@
   <title>Netflix - Watch TV Shows Online, Watch Movies Online</title>
   <link rel="icon" type="image/x-icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico">
   
-  <!-- Consolidated Stylesheet -->
-  <link rel="stylesheet" href="dist/bundle.css">
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="src/styles/main.css">
+  <link rel="stylesheet" href="src/styles/tudum.css">
+  <link rel="stylesheet" href="src/styles/navbar.css">
+  <link rel="stylesheet" href="src/styles/hero.css">
+  <link rel="stylesheet" href="src/styles/movie.css">
+  <link rel="stylesheet" href="src/styles/modal.css">
+  <link rel="stylesheet" href="src/styles/profile.css">
+  <link rel="stylesheet" href="src/styles/login.css">
+  <link rel="stylesheet" href="src/styles/footer.css">
 </head>
 <body>
-  <!-- Netflix React App Root Container -->
   <div id="root"></div>
 
-  <!-- Consolidated Self-Contained React Application Bundle -->
-  <script src="dist/bundle.js" defer></script>
+  <!-- React 18 & ReactDOM (Local with CDN fallback) -->
+  <script src="dist/vendor/react.min.js"></script>
+  <script>
+    if (!window.React) {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"><\/script>');
+    }
+  </script>
+
+  <script src="dist/vendor/react-dom.min.js"></script>
+  <script>
+    if (!window.ReactDOM) {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"><\/script>');
+    }
+  </script>
+
+  <!-- Netflix Consolidated React Application Bundle -->
+  <script src="dist/bundle.js"></script>
 </body>
 </html>

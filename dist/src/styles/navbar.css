@@ -1,0 +1,457 @@
+﻿/* ==========================================
+   NAVBAR & PROFILE DROPDOWN STYLES
+   ========================================== */
+
+.netflix-navbar-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 68px;
+  z-index: 1000;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+}
+
+.netflix-navbar-header.scrolled {
+  background-color: var(--netflix-black);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
+
+.netflix-navbar-header.kids-mode {
+  background: linear-gradient(180deg, rgba(10, 30, 60, 0.95) 0%, rgba(10, 20, 40, 0.6) 60%, transparent 100%);
+}
+
+.netflix-navbar-header.kids-mode.scrolled {
+  background-color: #0b1d3a;
+  border-bottom: 2px solid #3A86FF;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 4%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.brand-logo:hover {
+  transform: scale(1.03);
+}
+
+.kids-logo-tag {
+  background: #3A86FF;
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+}
+
+.desktop-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-link-btn {
+  color: #E5E5E5;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.nav-link-btn:hover {
+  color: #B3B3B3;
+}
+
+.nav-link-btn.active {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.kids-nav-btn {
+  color: #3A86FF !important;
+  font-weight: 700;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.exit-kids-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.exit-kids-btn:hover {
+  background: #E50914;
+  border-color: #E50914;
+}
+
+/* Search Bar */
+.search-bar-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-toggle-btn {
+  color: #FFFFFF;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  transition: transform 0.2s ease;
+}
+
+.search-toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+.search-input-wrapper {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  padding: 4px 8px;
+  width: 240px;
+}
+
+.search-text-input {
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-size: 13px;
+  width: 100%;
+  padding: 4px 6px;
+}
+
+.search-text-input:focus {
+  outline: none;
+}
+
+.search-clear-btn {
+  color: #AAAAAA;
+  font-size: 14px;
+  padding: 2px 4px;
+}
+
+.search-clear-btn:hover {
+  color: #FFFFFF;
+}
+
+/* Notifications Bell */
+.notifications-wrapper {
+  position: relative;
+}
+
+.navbar-icon-btn {
+  position: relative;
+  color: #FFFFFF;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.navbar-icon-btn:hover {
+  transform: scale(1.1);
+}
+
+.notif-badge-dot {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: var(--netflix-red);
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 800;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notifications-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 280px;
+  background: rgba(0, 0, 0, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 10px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+  z-index: 100;
+}
+
+.notif-header {
+  padding: 6px 16px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--netflix-muted);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.notif-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.notif-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.notif-thumb {
+  width: 50px;
+  height: 32px;
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.notif-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.notif-text strong {
+  font-size: 13px;
+  color: #FFFFFF;
+}
+
+.notif-text p {
+  font-size: 11px;
+  color: #CCCCCC;
+}
+
+.notif-time {
+  font-size: 10px;
+  color: var(--netflix-muted);
+  margin-top: 2px;
+}
+
+/* Profile Dropdown */
+.profile-dropdown-wrapper {
+  position: relative;
+}
+
+.profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.profile-avatar-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-name-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.profile-caret {
+  font-size: 10px;
+  color: #FFFFFF;
+  transition: transform 0.2s ease;
+}
+
+.profile-caret.open {
+  transform: rotate(180deg);
+}
+
+.profile-menu-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 220px;
+  background: rgba(0, 0, 0, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 10px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+}
+
+.profile-menu-header {
+  padding: 6px 16px 10px;
+}
+
+.profile-menu-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--netflix-muted);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.profile-list-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-switch-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+.profile-switch-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.profile-switch-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 3px;
+  object-fit: cover;
+}
+
+.profile-switch-name {
+  font-size: 13px;
+  color: #E5E5E5;
+  flex: 1;
+}
+
+.profile-kids-badge {
+  background: #3A86FF;
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+.profile-menu-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 8px 0;
+}
+
+.profile-menu-action {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 16px;
+  width: 100%;
+  font-size: 13px;
+  color: #E5E5E5;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.profile-menu-action:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+.action-svg-icon {
+  stroke: #CCCCCC;
+  flex-shrink: 0;
+  transition: stroke 0.2s ease;
+}
+
+.profile-menu-action:hover .action-svg-icon {
+  stroke: #FFFFFF;
+}
+
+.sign-out-action:hover {
+  color: var(--netflix-red);
+}
+
+.sign-out-action:hover .action-svg-icon {
+  stroke: var(--netflix-red);
+}
+
+/* Mobile Hamburger & Drawer */
+.mobile-hamburger-btn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.mobile-hamburger-btn .bar {
+  width: 22px;
+  height: 2px;
+  background-color: #FFFFFF;
+  border-radius: 2px;
+}
+
+.mobile-nav-drawer {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 4%;
+}
+
+.mobile-nav-item {
+  padding: 10px 0;
+  text-align: left;
+  font-size: 15px;
+  color: #CCCCCC;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobile-nav-item.active {
+  color: var(--netflix-red);
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .desktop-nav-links {
+    display: none;
+  }
+  .mobile-hamburger-btn {
+    display: flex;
+  }
+}
