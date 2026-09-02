@@ -1,4 +1,4 @@
-ï»¿// ==========================================
+// ==========================================
 // TV SERIES SEASONS & EPISODES DATA
 // Realistic episode guides with thumbnails, durations, synopses
 // ==========================================
@@ -176,7 +176,7 @@ export const SERIES_EPISODES = {
           episodeNumber: 2,
           title: "Night of the Comet",
           duration: "42m",
-          thumbnail: "assets/hero.jpg",
+          thumbnail: "assets/hero.jpeg",
           description: "Mystic Falls prepares for a festival while Damon continues to torment Stefan and attempts to charm Elena."
         }
       ]
@@ -303,7 +303,7 @@ export const SERIES_EPISODES = {
           title: "I'm Haru, the New Concierge!",
           duration: "15m",
           thumbnail: "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?w=600&auto=format&fit=crop&q=80",
-          description: "Haru arrives at PokÃ©mon Resort seeking peace and begins her training to care for delightful PokÃ©mon guests."
+          description: "Haru arrives at Pokémon Resort seeking peace and begins her training to care for delightful Pokémon guests."
         },
         {
           episodeNumber: 2,
