@@ -1,4 +1,4 @@
-﻿import fs from "fs";
+import fs from "fs";
 import path from "path";
 import vm from "vm";
 import { fileURLToPath } from "url";
@@ -170,4 +170,5 @@ fs.writeFileSync(path.join(DIST_DIR, "_redirects"), "/*  /index.html  200\n", "u
 
 console.log(`Created standalone dist/index.html and dist/_redirects`);
 console.log("=== BUILD COMPLETED SUCCESSFULLY WITH EXIT CODE 0 ===");
+console.log('dist contents:', fs.readdirSync(DIST_DIR));
 process.exit(0);
