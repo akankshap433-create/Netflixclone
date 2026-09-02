@@ -5,9 +5,11 @@
   "description": "Modern, responsive, polished Netflix-inspired streaming platform built with React.js",
   "main": "server.js",
   "scripts": {
+    "dev": "node server.js",
     "start": "node server.js",
     "build": "node build.js",
     "serve": "node server.js",
+    "preview": "node server.js",
     "test": "node test_app.js"
   },
   "keywords": [
