@@ -29,7 +29,31 @@ function stripModules(code) {
     .replace(/export\s+default\s+/g, "");
 }
 
-// Ordered list of files for the bundle
+// 1. Bundle all CSS files into dist/bundle.css
+const cssOrder = [
+  "src/styles/main.css",
+  "src/styles/tudum.css",
+  "src/styles/navbar.css",
+  "src/styles/hero.css",
+  "src/styles/movie.css",
+  "src/styles/modal.css",
+  "src/styles/profile.css",
+  "src/styles/login.css",
+  "src/styles/footer.css"
+];
+
+let bundleCss = "/* Netflix Consolidated Production Styles */\n";
+for (const file of cssOrder) {
+  if (fs.existsSync(file)) {
+    bundleCss += `\n/* --- ${file} --- */\n` + fs.readFileSync(file, "utf8") + "\n";
+  } else {
+    console.warn("CSS file not found:", file);
+  }
+}
+fs.writeFileSync("dist/bundle.css", bundleCss, "utf8");
+console.log(`Created dist/bundle.css: ${bundleCss.length} bytes`);
+
+// 2. Bundle all JS/JSX files into dist/bundle.js
 const bundleOrder = [
   "src/services/avatarService.js",
   "src/services/episodesData.js",
