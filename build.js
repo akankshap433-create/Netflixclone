@@ -9,11 +9,26 @@ vm.createContext(sandbox);
 vm.runInContext(babelCode, sandbox);
 const Babel = sandbox.Babel || sandbox.window.Babel;
 
+// Ensure output directories exist
 if (!fs.existsSync("dist")) {
   fs.mkdirSync("dist", { recursive: true });
 }
+if (!fs.existsSync("dist/assets")) {
+  fs.mkdirSync("dist/assets", { recursive: true });
+}
 
-console.log("Compiling files and creating single consolidated bundle...");
+console.log("=== BUILDING PRODUCTION STATIC DEPLOYMENT BUNDLE ===");
+
+// Copy assets to dist/assets
+if (fs.existsSync("assets")) {
+  const assetFiles = fs.readdirSync("assets");
+  for (const f of assetFiles) {
+    const srcPath = path.join("assets", f);
+    const destPath = path.join("dist/assets", f);
+    fs.copyFileSync(srcPath, destPath);
+  }
+  console.log(`Copied ${assetFiles.length} assets to dist/assets/`);
+}
 
 // Helper to remove import/export statements for standalone bundling
 function stripModules(code) {
@@ -136,3 +151,29 @@ ${transformedApp}
 
 fs.writeFileSync("dist/bundle.js", finalBundle, "utf8");
 console.log(`Created 100% self-contained dist/bundle.js: ${finalBundle.length} bytes`);
+
+// 3. Generate self-contained standalone dist/index.html
+const distIndexHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix - Watch TV Shows Online, Watch Movies Online</title>
+  <link rel="icon" type="image/x-icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico">
+  
+  <!-- Consolidated Production Stylesheet -->
+  <link rel="stylesheet" href="./bundle.css">
+</head>
+<body>
+  <!-- Netflix React App Root Container -->
+  <div id="root"></div>
+
+  <!-- Consolidated Self-Contained React Application Bundle -->
+  <script src="./bundle.js" defer></script>
+</body>
+</html>
+`;
+
+fs.writeFileSync("dist/index.html", distIndexHtml, "utf8");
+console.log(`Created standalone dist/index.html`);
+console.log("=== STATIC DEPLOYMENT BUILD COMPLETED SUCCESSFULLY ===");
