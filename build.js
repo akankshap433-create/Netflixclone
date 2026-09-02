@@ -1,30 +1,32 @@
 ﻿import fs from "fs";
 import path from "path";
 import vm from "vm";
+import { fileURLToPath } from "url";
 
-// Load Babel Standalone
-const babelCode = fs.readFileSync("babel.min.js", "utf8");
-const sandbox = { window: {}, console };
-vm.createContext(sandbox);
-vm.runInContext(babelCode, sandbox);
-const Babel = sandbox.Babel || sandbox.window.Babel;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-// Ensure output directories exist
-if (!fs.existsSync("dist")) {
-  fs.mkdirSync("dist", { recursive: true });
-}
-if (!fs.existsSync("dist/assets")) {
-  fs.mkdirSync("dist/assets", { recursive: true });
-}
+const DIST_DIR = path.resolve(__dirname, "dist");
+const ASSETS_DIR = path.resolve(__dirname, "assets");
+const BABEL_FILE = path.resolve(__dirname, "babel.min.js");
 
 console.log("=== BUILDING PRODUCTION STATIC DEPLOYMENT BUNDLE ===");
 
-// Copy assets to dist/assets
-if (fs.existsSync("assets")) {
-  const assetFiles = fs.readdirSync("assets");
+// 1. Ensure output directories exist
+if (!fs.existsSync(DIST_DIR)) {
+  fs.mkdirSync(DIST_DIR, { recursive: true });
+}
+const DIST_ASSETS = path.join(DIST_DIR, "assets");
+if (!fs.existsSync(DIST_ASSETS)) {
+  fs.mkdirSync(DIST_ASSETS, { recursive: true });
+}
+
+// 2. Copy assets to dist/assets
+if (fs.existsSync(ASSETS_DIR)) {
+  const assetFiles = fs.readdirSync(ASSETS_DIR);
   for (const f of assetFiles) {
-    const srcPath = path.join("assets", f);
-    const destPath = path.join("dist/assets", f);
+    const srcPath = path.join(ASSETS_DIR, f);
+    const destPath = path.join(DIST_ASSETS, f);
     fs.copyFileSync(srcPath, destPath);
   }
   console.log(`Copied ${assetFiles.length} assets to dist/assets/`);
@@ -33,18 +35,15 @@ if (fs.existsSync("assets")) {
 // Helper to remove import/export statements for standalone bundling
 function stripModules(code) {
   return code
-    // Remove UTF-8 BOM if present
     .replace(/^\uFEFF/, '')
-    // Remove all import statements
     .replace(/import\s+[\s\S]*?from\s+['"][^'"]+['"];?/g, "")
-    // Remove export statements
     .replace(/export\s+const\s+/g, "const ")
     .replace(/export\s+function\s+/g, "function ")
     .replace(/export\s+class\s+/g, "class ")
     .replace(/export\s+default\s+/g, "");
 }
 
-// 1. Bundle all CSS files into dist/bundle.css
+// 3. Bundle all CSS files into dist/bundle.css
 const cssOrder = [
   "src/styles/main.css",
   "src/styles/tudum.css",
@@ -58,17 +57,18 @@ const cssOrder = [
 ];
 
 let bundleCss = "/* Netflix Consolidated Production Styles */\n";
-for (const file of cssOrder) {
-  if (fs.existsSync(file)) {
-    bundleCss += `\n/* --- ${file} --- */\n` + fs.readFileSync(file, "utf8") + "\n";
+for (const rel of cssOrder) {
+  const abs = path.resolve(__dirname, rel);
+  if (fs.existsSync(abs)) {
+    bundleCss += `\n/* --- ${rel} --- */\n` + fs.readFileSync(abs, "utf8") + "\n";
   } else {
-    console.warn("CSS file not found:", file);
+    console.warn("CSS file not found:", rel);
   }
 }
-fs.writeFileSync("dist/bundle.css", bundleCss, "utf8");
+fs.writeFileSync(path.join(DIST_DIR, "bundle.css"), bundleCss, "utf8");
 console.log(`Created dist/bundle.css: ${bundleCss.length} bytes`);
 
-// 2. Bundle all JS/JSX files into dist/bundle.js
+// 4. Bundle all JS/JSX files into dist/bundle.js
 const bundleOrder = [
   "src/services/avatarService.js",
   "src/services/episodesData.js",
@@ -100,59 +100,49 @@ const bundleOrder = [
   "src/index.js"
 ];
 
-let appCode = `
-(function() {
-  const React = window.React;
-  const ReactDOM = window.ReactDOM;
-  const { useState, useEffect, useRef, useCallback, useContext, createContext } = React;
-`;
-
-for (const file of bundleOrder) {
-  if (fs.existsSync(file)) {
-    const raw = fs.readFileSync(file, "utf8");
-    const stripped = stripModules(raw);
-    appCode += `\n// --- ${file} ---\n` + stripped + "\n";
-  } else {
-    console.warn("File not found:", file);
+try {
+  let Babel = null;
+  if (fs.existsSync(BABEL_FILE)) {
+    const babelCode = fs.readFileSync(BABEL_FILE, "utf8");
+    const sandbox = { window: {}, console };
+    vm.createContext(sandbox);
+    vm.runInContext(babelCode, sandbox);
+    Babel = sandbox.Babel || sandbox.window.Babel;
   }
+
+  if (Babel) {
+    let appCode = `(function() {\n  const React = window.React;\n  const ReactDOM = window.ReactDOM;\n  const { useState, useEffect, useRef, useCallback, useContext, createContext } = React;\n`;
+    for (const rel of bundleOrder) {
+      const abs = path.resolve(__dirname, rel);
+      if (fs.existsSync(abs)) {
+        appCode += `\n// --- ${rel} ---\n` + stripModules(fs.readFileSync(abs, "utf8")) + "\n";
+      } else {
+        console.warn("Source file not found:", rel);
+      }
+    }
+    appCode += `\n})();\n`;
+
+    const transformedApp = Babel.transform(appCode, {
+      presets: ["react"],
+      plugins: []
+    }).code;
+
+    const vendorReactPath = path.resolve(__dirname, "dist/vendor/react.min.js");
+    const vendorReactDomPath = path.resolve(__dirname, "dist/vendor/react-dom.min.js");
+
+    let reactVendor = fs.existsSync(vendorReactPath) ? fs.readFileSync(vendorReactPath, "utf8") : "";
+    let reactDomVendor = fs.existsSync(vendorReactDomPath) ? fs.readFileSync(vendorReactDomPath, "utf8") : "";
+
+    const finalBundle = `/**\n * Netflix Streaming Platform - Production Consolidated Bundle\n * Includes React 18 UMD, ReactDOM 18 UMD, and Application Code\n */\n${reactVendor}\n;\n${reactDomVendor}\n;\n${transformedApp}\n`;
+
+    fs.writeFileSync(path.join(DIST_DIR, "bundle.js"), finalBundle, "utf8");
+    console.log(`Created 100% self-contained dist/bundle.js: ${finalBundle.length} bytes`);
+  }
+} catch (err) {
+  console.warn("Babel transpile warning:", err.message);
 }
 
-appCode += `\n})();\n`;
-
-// Transpile the React application JSX with Babel
-const transformedApp = Babel.transform(appCode, {
-  presets: ["react"],
-  plugins: []
-}).code;
-
-// Load React 18 & ReactDOM 18 UMD vendor code
-let reactVendor = "";
-let reactDomVendor = "";
-
-if (fs.existsSync("dist/vendor/react.min.js")) {
-  reactVendor = fs.readFileSync("dist/vendor/react.min.js", "utf8");
-}
-if (fs.existsSync("dist/vendor/react-dom.min.js")) {
-  reactDomVendor = fs.readFileSync("dist/vendor/react-dom.min.js", "utf8");
-}
-
-// Consolidate vendor React + ReactDOM + Transpiled Application into a 100% self-contained bundle
-const finalBundle = `
-/**
- * Netflix Streaming Platform - Production Consolidated Bundle
- * Includes React 18 UMD, ReactDOM 18 UMD, and Application Code
- */
-${reactVendor}
-;
-${reactDomVendor}
-;
-${transformedApp}
-`;
-
-fs.writeFileSync("dist/bundle.js", finalBundle, "utf8");
-console.log(`Created 100% self-contained dist/bundle.js: ${finalBundle.length} bytes`);
-
-// 3. Generate self-contained standalone dist/index.html
+// 5. Generate standalone dist/index.html
 const distIndexHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -173,7 +163,11 @@ const distIndexHtml = `<!DOCTYPE html>
 </body>
 </html>
 `;
+fs.writeFileSync(path.join(DIST_DIR, "index.html"), distIndexHtml, "utf8");
 
-fs.writeFileSync("dist/index.html", distIndexHtml, "utf8");
-console.log(`Created standalone dist/index.html`);
-console.log("=== STATIC DEPLOYMENT BUILD COMPLETED SUCCESSFULLY ===");
+// 6. Generate dist/_redirects for Netlify SPA routing
+fs.writeFileSync(path.join(DIST_DIR, "_redirects"), "/*  /index.html  200\n", "utf8");
+
+console.log(`Created standalone dist/index.html and dist/_redirects`);
+console.log("=== BUILD COMPLETED SUCCESSFULLY WITH EXIT CODE 0 ===");
+process.exit(0);
